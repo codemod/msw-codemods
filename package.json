@@ -1,9 +1,14 @@
 {
-  "name": "<SCOPE>-codemods",
+  "name": "msw-codemods",
   "private": true,
-  "version": "0.1.0",
-  "description": "Codemods for <SCOPE>",
+  "version": "1.0.0",
+  "description": "Official MSW codemods to help users adopt new features and handle breaking changes with ease",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codemod/msw-codemods.git"
+  },
+  "keywords": ["msw", "codemod", "migration", "mock-service-worker"],
   "scripts": {
     "lint": "npx -y @biomejs/biome lint .",
     "format": "npx -y @biomejs/biome format --write .",

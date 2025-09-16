@@ -1,5 +1,12 @@
 {
   "name": "@codemod-com/codemod-msw-2-response-usages",
+  "version": "1.0.5",
+  "description": "MSW codemod for response usages updates",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codemod/msw-codemods.git",
+    "directory": "codemods/response-usages"
+  },
   "dependencies": {},
   "devDependencies": {
     "@codemod-com/utilities": "workspace:*",
