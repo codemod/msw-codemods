@@ -1,9 +1,9 @@
 schema_version: "1.0"
 
 name: "msw-2-upgrade-recipe"
-version: "0.1.5"
+version: "0.0.1"
 description: "Transform legacy code patterns"
-author: "Author <author@example.com>"
+author: "Amirabbas Ghasemi <amirabbas08dev@gmail.com>"
 license: "MIT"
 workflow: "workflow.yaml"
 category: "migration"
