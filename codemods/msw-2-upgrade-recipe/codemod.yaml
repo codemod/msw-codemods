@@ -1,8 +1,8 @@
 schema_version: "1.0"
 
-name: "msw-2-upgrade-recipe"
-version: "0.0.1"
-description: "Transform legacy code patterns"
+name: "@codemod/msw-v2"
+version: "0.0.2"
+description: "Transform MSW v1 code to v2 patterns"
 author: "Amirabbas Ghasemi <amirabbas08dev@gmail.com>"
 license: "MIT"
 workflow: "workflow.yaml"
@@ -12,7 +12,7 @@ repository: "https://github.com/codemod/msw-codemods/tree/main/codemods/msw-2-up
 targets:
   languages: ["typescript"]
 
-keywords: ["transformation", "migration"]
+keywords: ["transformation", "migration", "msw", "msw-v2", "msw-v1-to-v2"]
 
 registry:
   access: "public"
