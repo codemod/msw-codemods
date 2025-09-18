@@ -12,7 +12,7 @@ async function transform(root: SgRoot<TSX>): Promise<string> {
       any: [
         {
           kind: "arrow_function",
-          pattern: "async $PARAMS => $BLOCK",
+          pattern: "$PARAMS => $BLOCK",
           inside: {
             kind: "arguments",
             inside: {
@@ -26,7 +26,7 @@ async function transform(root: SgRoot<TSX>): Promise<string> {
         },
         {
           kind: "arrow_function",
-          pattern: "$PARAMS => $BLOCK",
+          pattern: "async $PARAMS => $BLOCK",
           inside: {
             kind: "arguments",
             inside: {
@@ -63,7 +63,6 @@ async function transform(root: SgRoot<TSX>): Promise<string> {
     let params = paramsText.substring(1, paramsText.length - 1);
     let paramsArray = params.split(",") as string[];
     let reqName = paramsArray[0];
-    reqName = reqName?.split(":")[0] ?? "";
     reqName = reqName?.replace(/[{}]/g, "") ?? "";
     reqName = reqName.trim();
     // fix url
@@ -163,10 +162,10 @@ async function transform(root: SgRoot<TSX>): Promise<string> {
       } else {
         edits.push(req.replace(""));
       }
-      if (asyncParam) {
-        edits.push(prms?.replace(`async ${paramsText}`) ?? "");
-      }
     });
+    if (asyncParam) {
+      edits.push(prms?.replace(`async ${paramsText}`) ?? "");
+    }
   });
 
   let newSource = rootNode.text();
