@@ -67,6 +67,7 @@ async function transform(root: SgRoot<TSX>): Promise<string> {
     let params = paramsText.substring(1, paramsText.length - 1).split(",");
     let ctxParam = params[2];
     if (ctxParam) {
+      ctxParam = ctxParam.split(":")[0];
       let fetchs = arr.findAll({
         rule: {
           kind: "call_expression",

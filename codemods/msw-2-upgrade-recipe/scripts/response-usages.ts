@@ -94,6 +94,7 @@ async function transform(root: SgRoot<TSX>): Promise<string> {
           pattern: `${resParam}($$$CONTENT)`,
         },
       });
+      let newBlock = arr.text();
       response?.forEach((res) => {
         let content = res.getMultipleMatches("CONTENT");
         let delay = "";
@@ -152,8 +153,7 @@ async function transform(root: SgRoot<TSX>): Promise<string> {
                   ? "text"
                   : responseType ?? "";
             }
-            headers[`${name.substring(1, name.length - 1)}`] =
-              content.substring(1, content.length - 1);
+            headers[`${name.substring(1, name.length - 1)}`] = content;
           });
           // cookies
           let isCokies = c.findAll({
@@ -234,7 +234,6 @@ async function transform(root: SgRoot<TSX>): Promise<string> {
             responseType = "json";
           }
         });
-        let newBlock = arr.text();
         if (delay) {
           if (hasMswImport) {
             const importMatch = hasMswImport.getMatch("IMPORTS");
@@ -264,10 +263,12 @@ async function transform(root: SgRoot<TSX>): Promise<string> {
           });
           headers["Set-Cookie"] = textCookies as string;
         }
+        let headersText = "";
+        for (let head of Object.keys(headers)) {
+          headersText += `"${head}": ${headers[head]}`;
+        }
         let secParam = `{${status ? `status: ${status},\n` : ""}${
-          Object.keys(headers).length
-            ? `headers: ${JSON.stringify(headers)},\n`
-            : ""
+          Object.keys(headers).length ? `headers: {${headersText}},\n` : ""
         }}`;
         let thirdParam = `${data ? `data: ${data},\n` : ""}${
           errors ? `errors: ${errors},\n` : ""
@@ -281,9 +282,8 @@ async function transform(root: SgRoot<TSX>): Promise<string> {
             secParam != "{}" ? secParam : ""
           })`
         );
-
-        edits.push(arr.replace(newBlock));
       });
+      edits.push(arr.replace(newBlock));
     }
   });
 

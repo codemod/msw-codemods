@@ -67,8 +67,12 @@ async function transform(root: SgRoot<TSX>): Promise<string> {
     if (params.includes("(") && params.includes(")")) {
       params = paramsText.substring(1, paramsText.length - 1);
     }
+    if (params[0] == "{" && params[params.length - 1] == "}") {
+      return;
+    }
     let paramsArray = params.split(",") as string[];
     let reqName = paramsArray[0];
+    reqName = reqName?.split(":")[0] ?? "";
     reqName = reqName?.replace(/[{}]/g, "") ?? "";
     reqName = reqName.trim();
     let block = arrowFun.getMatch("BLOCK");

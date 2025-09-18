@@ -1,4 +1,4 @@
-# msw-2-upgrade-recipe
+# @codemod/msw-v2
 
 Transform MSW v1 code to v2 patterns
 
@@ -6,10 +6,10 @@ Transform MSW v1 code to v2 patterns
 
 ```bash
 # Install from registry
-codemod run msw-2-upgrade-recipe
+npx codemod@latest run @codemod/msw-v2
 
 # Or run locally
-codemod run -w workflow.yaml
+npx codemod@latest run -w workflow.yaml
 ```
 
 ## Usage
