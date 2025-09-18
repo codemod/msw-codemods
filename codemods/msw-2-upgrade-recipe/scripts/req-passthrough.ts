@@ -65,6 +65,8 @@ async function transform(root: SgRoot<TSX>): Promise<string> {
     let paramsArray = params.split(",") as string[];
     if (paramsArray.length) {
       let reqName = paramsArray[0];
+      reqName = reqName ?? "";
+      reqName = reqName.split(":")[0];
       const memberExpression = arr.findAll({
         rule: {
           kind: "member_expression",

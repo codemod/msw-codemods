@@ -63,6 +63,7 @@ async function transform(root: SgRoot<TSX>): Promise<string> {
     let params = paramsText.substring(1, paramsText.length - 1);
     let paramsArray = params.split(",") as string[];
     let reqName = paramsArray[0];
+    reqName = reqName?.split(":")[0] ?? "";
     reqName = reqName?.replace(/[{}]/g, "") ?? "";
     reqName = reqName.trim();
     // fix url

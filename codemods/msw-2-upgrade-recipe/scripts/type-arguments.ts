@@ -1,5 +1,6 @@
 import type { SgRoot } from "codemod:ast-grep";
 import type TSX from "codemod:ast-grep/langs/tsx";
+import getImportAlias from "../utils/get-import-alias.ts";
 import isMSWCall from "../utils/is-msw-calls.ts";
 
 async function transform(root: SgRoot<TSX>): Promise<string> {
@@ -235,6 +236,9 @@ async function transform(root: SgRoot<TSX>): Promise<string> {
     .filter((call) => isMSWCall(call.text(), "msw", "http", rootNode));
 
   mswCalls.forEach((call) => {
+    const obj = call.getMatch("OBJ")?.text() ?? "";
+    const mswAlias = getImportAlias("msw", "http", rootNode);
+    if (obj != mswAlias) return;
     const bodyCasts = call.findAll({
       rule: {
         kind: "as_expression",
