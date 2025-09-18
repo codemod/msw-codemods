@@ -1,7 +1,7 @@
 schema_version: "1.0"
 
 name: "@codemod/msw-v2"
-version: "0.0.2"
+version: "0.0.3"
 description: "Transform MSW v1 code to v2 patterns"
 author: "Amirabbas Ghasemi <amirabbas08dev@gmail.com>"
 license: "MIT"
