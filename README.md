@@ -17,7 +17,7 @@ npx codemod@latest <codemod-name>
 For example:
 
 ```bash
-npx codemod@latest msw-2/upgrade-recipe
+npx codemod@latest @codemod/msw-v2
 ```
 
 ### From source
@@ -30,10 +30,6 @@ npx codemod workflow run -w /path/to/folder/containing/workflow.yaml
 > By default, codemods run in the current folder. Add `-t /target/path` to change it.
 
 See the [Codemod docs](https://go.codemod.com/cli-docs) for all CLI commands and options.
-
-## Security
-
-See [SECURITY.md](./SECURITY.md).
 
 ## License
 
